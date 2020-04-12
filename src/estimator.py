@@ -14,7 +14,7 @@ def estimator(data):
 	new2 = int(new*(2**(math.floor(number/3))))
 	new3 = int(math.floor(0.15*new2))
 	# hospital beds
-	availableBed = data['totalHospitalsBeds']
+	availableBed = data['totalHospitalBeds']
 	availableBed = math.floor(0.35*availableBed)
 	unavailableBed = availableBed - new3
 	# print(unavailableBed)
