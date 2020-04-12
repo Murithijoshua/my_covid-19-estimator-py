@@ -15,7 +15,7 @@ def estimator(data):
 	new2 = int(new*(2**((number/3))))
 	new3 = int((0.15*new2))
 	# hospital beds
-	availableBed = int(0.35*data['totalHospitalsBeds'])
+	availableBed = int(0.35*data['totalHospitalBeds'])
 	unavailableBed = int(availableBed - new3)
 	# print(unavailableBed)
 	# icu
@@ -60,18 +60,4 @@ def estimator(data):
 	print(data)
 	# print(impact,severeImpact)
 	return data
-# data = {
-#      "region":{
-#          "name": "africa",
-#          "avgAge":19.7,
-#          "avgDailyIncomeInUSD":4,
-#          "avgDailyIncomePopulation":0.73
-#          } ,
-#          "periodType":"weeks",
-#          "timeToElapse": 38,
-#          "reportedCases": 2747,
-#          "population":92931687,
-#          "totalHospitalsBeds":678874
-
-#       }
-# estimator(data)
+# 
