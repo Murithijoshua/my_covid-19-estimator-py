@@ -1,4 +1,5 @@
 import math
+from pprint import pprint
 def estimator(data):
 	# print(data['periodType'])
 	raw = data['periodType']
@@ -10,26 +11,22 @@ def estimator(data):
 	if raw == 'weeks':
 		number = number*7
 	print(number)
-	#currently infected
-	new = math.trunc(data['reportedCases']*10)
-	# infections by request time
-	new2 = math.trunc(new*(2**((number/3))))
-	#severe cases by request
-	new3 = math.trunc(0.15*new2)
+	new = int(data['reportedCases']*10)
+	new2 = int(new*(2**((number/3))))
+	new3 = int((0.15*new2))
 	# hospital beds
-	availableBed = data['totalHospitalBeds']
-	availableBed = math.trunc(0.35*availableBed)
-	unavailableBed = math.trunc(availableBed - new3)
+	availableBed = int(0.35*data['totalHospitalsBeds'])
+	unavailableBed = int(availableBed - new3)
 	# print(unavailableBed)
 	# icu
-	icu = math.trunc(0.5*new2)
+	icu = int(0.5*new2)
 	# ventilators
-	i_ventilators = math.trunc(0.2*new2)
+	i_ventilators = int(0.2*new2)
 	# dollar in flight
 	averangedailyincome = data['region']['avgDailyIncomePopulation']
 	populationincome = data['region']['avgDailyIncomeInUSD']
 	days = number
-	dollars = math.trunc((new2*averangedailyincome*populationincome)/days)
+	dollars = int((new2*averangedailyincome*populationincome)/days)
 	# print(dollars)
 	impact = {'currentlyInfected': new, 'infectionsByRequestedTime':new2,
 				'severeCasesByRequestedTime':new3,
@@ -38,20 +35,20 @@ def estimator(data):
 				'casesForVentilatorsByRequestedTime':i_ventilators,
 				'dollarsInFlight':dollars}
 	"""  severe impacts code starts here!"""
-	Sia = math.trunc(data['reportedCases']*50)
-	Sia2 = math.trunc(Sia*(2**((number/3))))
-	Sia3 = math.trunc(0.15*Sia2)
+	Sia = int(data['reportedCases']*50)
+	Sia2 = int(Sia*(2**((number/3))))
+	Sia3 = int((0.15*Sia2))
 	# hospitalBeds
-	sunavailableBed = math.trunc(availableBed - Sia3)
+	sunavailableBed = int(availableBed - Sia3)
 	# icu
-	s_icu = math.trunc(0.5*Sia2)
+	s_icu = int(0.5*Sia2)
 	# casesForVentilatorsByRequestedTime
-	ventilators = math.trunc(0.2*Sia2)
+	ventilators = int(0.2*Sia2)
 	# dollar in flight
 	saverangedailyincome = data['region']['avgDailyIncomePopulation']
 	spopulationincome = data['region']['avgDailyIncomeInUSD']
 	sdays = number
-	sdollars = math.trunc((Sia2*saverangedailyincome*spopulationincome)/sdays)
+	sdollars = ((Sia2*saverangedailyincome*spopulationincome)/sdays)
 	severeImpact = {'currentlyInfected': Sia, 
 					'infectionsByRequestedTime':Sia2,
 					'severeCasesByRequestedTime':Sia3,
@@ -59,27 +56,22 @@ def estimator(data):
 					'casesForICUByRequestedTime': s_icu,
 					'casesForVentilatorsByRequestedTime':ventilators,
 					'dollarsInFlight':sdollars}
-	data = {'data':data,
-         'impact':impact,
-         'severeImpact':severeImpact
-         }
-	p = data
-	
+	data = {'data':data,'impact':impact,'severeImpact':severeImpact}
 	print(data)
 	# print(impact,severeImpact)
 	return data
-data = {
-     "region":{
-         "name": "africa",
-         "avgAge":19.7,
-         "avgDailyIncomeInUSD":4,
-         "avgDailyIncomePopulation":0.73
-         } ,
-         "periodType":"days",
-         "timeToElapse": 38,
-         "reportedCases": 2747,
-         "population":92931687,
-         "totalHospitalBeds":678874
+# data = {
+#      "region":{
+#          "name": "africa",
+#          "avgAge":19.7,
+#          "avgDailyIncomeInUSD":4,
+#          "avgDailyIncomePopulation":0.73
+#          } ,
+#          "periodType":"weeks",
+#          "timeToElapse": 38,
+#          "reportedCases": 2747,
+#          "population":92931687,
+#          "totalHospitalsBeds":678874
 
-      }
-estimator(data)
+#       }
+# estimator(data)
