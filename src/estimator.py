@@ -30,7 +30,7 @@ def estimator(data):
 	averangedailyincome = data['region']['avgDailyIncomePopulation']
 	populationincome = data['region']['avgDailyIncomeInUSD']
 	days = number
-	dollars = round((new2*averangedailyincome*populationincome)*days,2)
+	dollars = round((new2*averangedailyincome*populationincome)/days,1)
 	# print(dollars)
 	impact = {'currentlyInfected': new,
             'infectionsByRequestedTime':new2,
@@ -53,7 +53,7 @@ def estimator(data):
 	saverangedailyincome = data['region']['avgDailyIncomePopulation']
 	spopulationincome = data['region']['avgDailyIncomeInUSD']
 	sdays = number
-	sdollars = round((Sia2*saverangedailyincome*spopulationincome)*sdays,2)
+	sdollars = round((Sia2*saverangedailyincome*spopulationincome)/sdays,1)
 	severeImpact = {'currentlyInfected': Sia, 
 					'infectionsByRequestedTime':Sia2,
 					'severeCasesByRequestedTime':Sia3,
