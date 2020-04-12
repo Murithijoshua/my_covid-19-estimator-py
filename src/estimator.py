@@ -1,5 +1,4 @@
 import math
-from pprint import pprint
 def estimator(data):
 	# print(data['periodType'])
 	raw = data['periodType']
@@ -74,4 +73,4 @@ def estimator(data):
 #          "totalHospitalsBeds":678874
 
 #       }
-# estimator(data)
+estimator()
