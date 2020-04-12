@@ -10,8 +10,11 @@ def estimator(data):
 	if raw == 'weeks':
 		number = number*7
 	print(number)
+	#currently infected
 	new = math.trunc(data['reportedCases']*10)
-	new2 = new*(2**(math.trunc(number/3)))
+	# infections by request time
+	new2 = math.trunc(new*(2**((number/3))))
+	#severe cases by request
 	new3 = math.trunc(0.15*new2)
 	# hospital beds
 	availableBed = data['totalHospitalBeds']
@@ -35,9 +38,9 @@ def estimator(data):
 				'casesForVentilatorsByRequestedTime':i_ventilators,
 				'dollarsInFlight':dollars}
 	"""  severe impacts code starts here!"""
-	Sia = int(data['reportedCases']*50)
-	Sia2 = int(Sia*(2**(math.trunc(number/3))))
-	Sia3 = int(math.trunc(0.15*Sia2))
+	Sia = math.trunc(data['reportedCases']*50)
+	Sia2 = math.trunc(Sia*(2**((number/3))))
+	Sia3 = math.trunc(0.15*Sia2)
 	# hospitalBeds
 	sunavailableBed = math.trunc(availableBed - Sia3)
 	# icu
