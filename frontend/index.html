@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta name="Description" content="Joshua, covid-19 estimator form assesment">
+		<title>Covid-19-estimator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="css/style.css" async>
+	</head>
+
+	<body>
+		<div>
+			<ul class="ul">
+			  <li class="li"><a class="active" href="#home">Covid-19 estimator</a></li>
+			  <li class="li"><a href="#contact">Developer Contacts</a>
+			  	<ul>
+			  	<li><a href="https://twitter.com/MyzaliusJoshua"target="_blank" rel="noreferrer">Twitter</a></li>
+			  	<li><a href="https://github.com/Murithijoshua"target="_blank" rel="noreferrer">Github</a></li>
+			  	<li><a href="https://www.facebook.com/joshuaz.myzalius"target="_blank" rel="noreferrer">facebook</a></li>
+			  	</ul>
+
+
+			  </li>
+			</ul>
+		</div>
+		<div class="wrapper" style="background-image: url('images/bg.jpg');">
+			<div class="inner">
+				<form action="">
+					<h3>Fill in the Form</h3>
+					<div class="form-group">
+						<div class="form-wrapper">
+							<label for="data-population">Population</label>
+							<input type="number" class="form-control" id="data-population" placeholder="number of people" data-population class="form-control">
+						</div>
+						<div class="form-wrapper">
+							<label for="data-reported-cases">Reported cases</label>
+         					 <input type="number" class="form-control" id="data-reported-cases" placeholder="Reported cases" class="form-control" data-reported-cases>
+						</div>
+					</div>
+					<div class="form-wrapper">
+						<label for="data-total-hospital-beds">Total hospital beds</label>
+          				<input type="number" class="form-control" id="data-total-hospital-beds" placeholder="No of beds" class="form-control" data-total-hospital-beds>
+					</div>
+					<div class="form-wrapper">
+						<label for="data-time-to-elapse">Time to elapse</label>
+          				<input type="number" class="form-control" id="data-time-to-elapse" placeholder="time elpsed" data-time-to-elapse>
+        			</div>
+
+					<div class="form-wrapper">
+		                <label for="data-period-type">Period type</label>
+				          <select class="form-control" id="data-period-type" data-period-type>
+				            <option selected>Choose ...</option>
+				            <option value="days">Days</option>
+				            <option value="weeks">Weeks</option>
+				            <option value="months">Months</option>
+				          </select>
+		              </div>
+					
+					
+					<button type="submit" id="data-go-estimate" class="btn btn-success" data-go-estimate>Get Estimate</button>
+				</form>
+			</div>
+		</div>
+		<footer style="background-color:;text-align: center; "> &copy 2020 Joshua Murithi #BUILDFORSDG</footer>
+		
+	</body>
+</html>
