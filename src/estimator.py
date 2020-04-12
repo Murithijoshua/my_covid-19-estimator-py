@@ -65,18 +65,18 @@ def estimator(data):
 	print(data)
 	# print(impact,severeImpact)
 	return data
-data = {
-     "region":{
-         "name": "africa",
-         "avgAge":19.7,
-         "avgDailyIncomeInUSD":4,
-         "avgDailyIncomePopulation":0.73
-         } ,
-         "periodType":"days",
-         "timeToElapse": 38,
-         "reportedCases": 2747,
-         "population":92931687,
-         "totalHospitalBeds":678874
+# data = {
+#      "region":{
+#          "name": "africa",
+#          "avgAge":19.7,
+#          "avgDailyIncomeInUSD":4,
+#          "avgDailyIncomePopulation":0.73
+#          } ,
+#          "periodType":"days",
+#          "timeToElapse": 38,
+#          "reportedCases": 2747,
+#          "population":92931687,
+#          "totalHospitalBeds":678874
 
-      }
-estimator(data)
+#       }
+# estimator(data)
