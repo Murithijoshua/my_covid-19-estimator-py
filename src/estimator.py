@@ -10,9 +10,9 @@ def estimator(data):
 	if raw == 'weeks':
 		number = number*7
 	print(number)
-	new = int(data['reportedCases']*10)
-	new2 = int(new*(2**(math.trunc(number/3))))
-	new3 = int(math.trunc(0.15*new2))
+	new = math.trunc(data['reportedCases']*10)
+	new2 = new*(2**(math.trunc(number/3)))
+	new3 = math.trunc(0.15*new2)
 	# hospital beds
 	availableBed = data['totalHospitalBeds']
 	availableBed = math.trunc(0.35*availableBed)
@@ -65,18 +65,18 @@ def estimator(data):
 	print(data)
 	# print(impact,severeImpact)
 	return data
-# data = {
-#      "region":{
-#          "name": "africa",
-#          "avgAge":19.7,
-#          "avgDailyIncomeInUSD":4,
-#          "avgDailyIncomePopulation":0.73
-#          } ,
-#          "periodType":"days",
-#          "timeToElapse": 38,
-#          "reportedCases": 2747,
-#          "population":92931687,
-#          "totalHospitalBeds":678874
+data = {
+     "region":{
+         "name": "africa",
+         "avgAge":19.7,
+         "avgDailyIncomeInUSD":4,
+         "avgDailyIncomePopulation":0.73
+         } ,
+         "periodType":"days",
+         "timeToElapse": 38,
+         "reportedCases": 2747,
+         "population":92931687,
+         "totalHospitalBeds":678874
 
-#       }
-# estimator(data)
+      }
+estimator(data)
