@@ -56,7 +56,7 @@ def estimator(data):
 					'casesForVentilatorsByRequestedTime':ventilators,
 					'dollarsInFlight':sdollars}
 	data = {'data':data,'impact':impact,'severeImpact':severeImpact}
-	pprint(data)
+	# print(data)
 	# print(impact,severeImpact)
 	return data
 # data = {
@@ -73,4 +73,4 @@ def estimator(data):
 #          "totalHospitalsBeds":678874
 
 #       }
-estimator()
+# estimator(data)
