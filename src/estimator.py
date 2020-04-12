@@ -11,22 +11,22 @@ def estimator(data):
 		number = number*7
 	print(number)
 	new = int(data['reportedCases']*10)
-	new2 = int(new*(2**(math.floor(number/3))))
-	new3 = int(math.floor(0.15*new2))
+	new2 = int(new*(2**(math.trunc(number/3))))
+	new3 = int(math.trunc(0.15*new2))
 	# hospital beds
 	availableBed = data['totalHospitalBeds']
-	availableBed = math.floor(0.35*availableBed)
-	unavailableBed = math.floor(availableBed - new3)
+	availableBed = math.trunc(0.35*availableBed)
+	unavailableBed = math.trunc(availableBed - new3)
 	# print(unavailableBed)
 	# icu
-	icu = math.floor(0.5*new2)
+	icu = math.trunc(0.5*new2)
 	# ventilators
-	i_ventilators = math.floor(0.2*new2)
+	i_ventilators = math.trunc(0.2*new2)
 	# dollar in flight
 	averangedailyincome = data['region']['avgDailyIncomePopulation']
 	populationincome = data['region']['avgDailyIncomeInUSD']
 	days = number
-	dollars = math.floor((new2*averangedailyincome*populationincome)/days)
+	dollars = math.trunc((new2*averangedailyincome*populationincome)/days)
 	# print(dollars)
 	impact = {'currentlyInfected': new, 'infectionsByRequestedTime':new2,
 				'severeCasesByRequestedTime':new3,
@@ -36,19 +36,19 @@ def estimator(data):
 				'dollarsInFlight':dollars}
 	"""  severe impacts code starts here!"""
 	Sia = int(data['reportedCases']*50)
-	Sia2 = int(Sia*(2**(math.floor(number/3))))
-	Sia3 = int(math.floor(0.15*Sia2))
+	Sia2 = int(Sia*(2**(math.trunc(number/3))))
+	Sia3 = int(math.trunc(0.15*Sia2))
 	# hospitalBeds
-	sunavailableBed = math.floor(availableBed - Sia3)
+	sunavailableBed = math.trunc(availableBed - Sia3)
 	# icu
-	s_icu = math.floor(0.5*Sia2)
+	s_icu = math.trunc(0.5*Sia2)
 	# casesForVentilatorsByRequestedTime
-	ventilators = math.floor(0.2*Sia2)
+	ventilators = math.trunc(0.2*Sia2)
 	# dollar in flight
 	saverangedailyincome = data['region']['avgDailyIncomePopulation']
 	spopulationincome = data['region']['avgDailyIncomeInUSD']
 	sdays = number
-	sdollars = math.floor((Sia2*saverangedailyincome*spopulationincome)/sdays)
+	sdollars = math.trunc((Sia2*saverangedailyincome*spopulationincome)/sdays)
 	severeImpact = {'currentlyInfected': Sia, 
 					'infectionsByRequestedTime':Sia2,
 					'severeCasesByRequestedTime':Sia3,
