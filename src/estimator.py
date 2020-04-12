@@ -16,7 +16,7 @@ def estimator(data):
 	# hospital beds
 	availableBed = data['totalHospitalBeds']
 	availableBed = math.floor(0.35*availableBed)
-	unavailableBed = availableBed - new3
+	unavailableBed = math.floor(availableBed - new3)
 	# print(unavailableBed)
 	# icu
 	icu = math.floor(0.5*new2)
@@ -39,7 +39,7 @@ def estimator(data):
 	Sia2 = int(Sia*(2**(math.floor(number/3))))
 	Sia3 = int(math.floor(0.15*Sia2))
 	# hospitalBeds
-	sunavailableBed = availableBed - Sia3
+	sunavailableBed = math.floor(availableBed - Sia3)
 	# icu
 	s_icu = math.floor(0.5*Sia2)
 	# casesForVentilatorsByRequestedTime
@@ -56,22 +56,27 @@ def estimator(data):
 					'casesForICUByRequestedTime': s_icu,
 					'casesForVentilatorsByRequestedTime':ventilators,
 					'dollarsInFlight':sdollars}
-	data = {'data':data,'impact':impact,'severeImpact':severeImpact}
-	# print(data)
+	data = {'data':data,
+         'impact':impact,
+         'severeImpact':severeImpact
+         }
+	p = data
+	
+	print(data)
 	# print(impact,severeImpact)
 	return data
-# data = {
-#      "region":{
-#          "name": "africa",
-#          "avgAge":19.7,
-#          "avgDailyIncomeInUSD":4,
-#          "avgDailyIncomePopulation":0.73
-#          } ,
-#          "periodType":"days",
-#          "timeToElapse": 38,
-#          "reportedCases": 2747,
-#          "population":92931687,
-#          "totalHospitalsBeds":678874
+data = {
+     "region":{
+         "name": "africa",
+         "avgAge":19.7,
+         "avgDailyIncomeInUSD":4,
+         "avgDailyIncomePopulation":0.73
+         } ,
+         "periodType":"days",
+         "timeToElapse": 38,
+         "reportedCases": 2747,
+         "population":92931687,
+         "totalHospitalBeds":678874
 
-#       }
-# estimator(data)
+      }
+estimator(data)
